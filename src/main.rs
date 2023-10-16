@@ -1,66 +1,33 @@
+mod funcs;
 mod utils;
-use crate::utils::*;
-use std::{thread, time::Duration};
+use std::collections::HashMap;
 fn main() {
-    println!("Many cars!! wooww");
-    let death = false;
-    let mut tick = 0;
-    let num1 = 1;
-    let num2 = 1;
-    let mut road = Road::def_road(num1, num2); // note that 1st road is defined as green, 2nd road is defined as red.
+    let mut reservation_map: HashMap<u8, utils::Reservation> = HashMap::new();
+    let mut id: u8 = 1;
+    println!("Good morning!");
     loop {
-        thread::sleep(Duration::from_secs(1));
-        tick += 1;
-        println!("\nTick {}\n", tick);
-        let signalprint1: &str = match road.signal_r1 {
-            State::Green => "Green",
-            State::Yellow => "Yellow",
-            State::Red => "Red",
-        };
-        let signalprint2: &str = match road.signal_r2 {
-            State::Green => "Green",
-            State::Yellow => "Yellow",
-            State::Red => "Red",
-        };
         println!(
-            "Road 1; Cars: {:?}\nRoad 1; Signal {}.\n",
-            road.qnt_r1, signalprint1
+            "
+    \nWhat would you like to do?
+    \n  (1) Make a reservation
+    \n  (2) Cancel a previous reservation
+    \n  (3) See available reservations
+    \n  (4) Exit\n"
         );
-        println!(
-            "Road 2; Cars: {:?}\nRoad 2; Signal {}.\n",
-            road.qnt_r2, signalprint2
-        );
-        if (tick % 5) == 0 {
-            road.signal_r1 = State::change_state(road.signal_r1);
-            road.signal_r2 = State::change_state(road.signal_r2);
-        } else if (tick % 3) == 0  // modules the 1st road
-            && match road.signal_r1 {
-                State::Green => true,
-                State::Yellow => true,
-                State::Red => false,
-            } && road.qnt_r1.len() > 0
-        {
-            road.qnt_r1.remove(0);
-        } else if (tick % 3) == 0 // modules the 2nd road
-            && match road.signal_r2 {
-                State::Green => true,
-                State::Yellow => true,
-                State::Red => false,
-            } && road.qnt_r2.len() > 0
-        {
-            road.qnt_r2.remove(0);
-        } else if (tick % 4) == 0 {
-            if (tick % 2) == 0 {
-                let mut nvec = Cars::add_cars(death, num1);
-                road.qnt_r1.append(&mut nvec)
-            } else {
-                let mut nvec = Cars::add_cars(death, num2);
-                road.qnt_r2.append(&mut nvec)
-            };
-            if death == true {
-                println!("Dont drive drunk kids!");
-                std::process::exit(0)
-            }
+        let mut option1 = String::new();
+        std::io::stdin().read_line(&mut option1).expect("error");
+        let option: u8 = option1.trim().parse().unwrap();
+        if option == 1 {
+            reservation_map.insert(funcs::id(id), funcs::new_reservation());
+            println!("Your reservation ID is: {}", id)
+        } else if option == 2 {
+            funcs::cancel_reservation(&mut reservation_map);
+        } else if option == 3 {
+            funcs::see_reservations(&mut reservation_map);
+        } else if option == 4 {
+            funcs::exit_code();
+        } else {
+            println!("Invalid option, try again");
         }
     }
 }
