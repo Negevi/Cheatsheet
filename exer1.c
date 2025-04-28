@@ -1,12 +1,12 @@
 #include <stdio.h>
 
 void main() {
-    int n, fact;
-
-    scanf("%d", &n);
-    fact = n;
-    for(n; n != 1; n--) {
-        fact = (n - 1) * fact;
+    int d1,d2,d3;
+    for(d1 = 1; d1 <= 6; d1++) {
+        for(d2 = d1; d2 <= 6; d2++) {
+            for(d3 = d2; d3 <= 6; d3++) {
+                printf("%d %d %d \n", d1,d2,d3);
+            }
+        }
     }
-    printf("Factorial = %d", fact);
 }

@@ -1,26 +1,24 @@
 #include <stdio.h>
 
 void main() {
-    int i, n = 0, past_n, decres_flag = 1, cresc_flag = 1;
-    scanf("%d", &i);
-    printf("Numero? (%d)\n", i);
-    scanf("%d", &past_n);
-    for(i -= 1; i > 0; i--) {
-        printf("Numero? (%d)\n", i);
-        scanf("%d", &n);
-        if(n > past_n) {
-            decres_flag = 0;
-        } else if(n < past_n) {
-            cresc_flag = 0;
-        } else {
-            cresc_flag = 0;
-            decres_flag = 0;
+    int n, i, tested_n = 2,
+        prime, counter = 0, soma = 0; // <- variaveis acesorias
+    scanf("%d", &n);
+
+    while(n != counter) {
+        prime = 1; // assume n is prime
+        for(i = 2; i < tested_n; i++) {
+        // printf("in loop %d", tested_n);
+            if(tested_n % i == 0) {
+                prime = 0;
+                // printf("not prime");
+            }
         }
+        if(prime == 1) { // if prime
+            soma += tested_n;
+            counter++;
+        }
+        tested_n++;
     }
-    if(cresc_flag == 1)
-        printf("Crescente");
-    else if(decres_flag == 1)
-        printf("Decrescente");
-    else
-        printf("nada");
+    printf("%d", soma);
 }
