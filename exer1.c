@@ -1,12 +1,22 @@
 #include <stdio.h>
 
-void main() {
-    int d1,d2,d3;
-    for(d1 = 1; d1 <= 6; d1++) {
-        for(d2 = d1; d2 <= 6; d2++) {
-            for(d3 = d2; d3 <= 6; d3++) {
-                printf("%d %d %d \n", d1,d2,d3);
-            }
-        }
+int arredonda(double x) {
+    int intp = x, signal = 1;
+
+    if(x < 0) {
+        x = x * -1;
+        intp = x;
+        signal = -1;
     }
+
+    if(x - intp >= 0.5)
+        return (intp + 1) * signal;
+    else
+        return intp * signal;
+}
+
+void main() {
+    double n;
+    scanf("%lf", &n);
+    printf("%d", arredonda(n));
 }

@@ -1,33 +1,20 @@
 #include <stdio.h>
 
+int testaTipoChar(char c) {
+    char checker;
+    if(checker << 7 & checker << 1)
+        return 2;
+    return 0;
+    printf
+}
+
 void main() {
-    int n, i, width, aux1, aux2, lines, f_down = 0;
-    char symbol;
-
-    scanf("%d %c", &n, &symbol);
-    width = 2 * n + 1; // largura e numero total de linhas
-    lines = width;
-    aux1 = width / 2;
-    aux2 = width - 2 * aux1;
-
-    while(lines > 0) {
-        for(i = 0; i < aux1; i++)
-            printf(" ");
-        for(i = 0; i < aux2; i++)
-            printf("%c", symbol);
-        printf("\n");
-
-        if(aux1 <= 0)
-            f_down = 1;
-        if(f_down == 1) {
-            aux1++;
-            aux2 = width - 2 * aux1;
-        } else {
-            aux1--;
-            aux2 = width - 2 * aux1;
-        }
-        lines--;
-    }
-
-
+    testaTipoChar('c');
+    //printf("%d", testaTipoChar('A'));
+    //printf("%d", testaTipoChar('a'));
+    //printf("%d", testaTipoChar('C'));
+    //printf("%d", testaTipoChar('c'));
+    //printf("%d", testaTipoChar('1'));
+    //printf("%d", testaTipoChar('1s12e1fgksdgbjngaiog'));
+    // 1 - 2 - 3 - 4 - 5 - 0
 }

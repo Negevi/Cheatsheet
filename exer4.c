@@ -1,20 +1,13 @@
 #include <stdio.h>
 
-void main() {
-    int n, i, digito, grandeza = 1, flag = 0;
-    scanf("%d %d", &n, &digito);
-
-    while(grandeza <= n) {
-        grandeza = grandeza * 10;
-        i += 1;
-        printf("%d", grandeza);
+unsigned long long potencia(unsigned int b, unsigned int e) {
+    unsigned long long resp = b;
+    for(e; e > 0; e--) {
+        resp = resp * b;
     }
+    return resp;
+}
 
-    for(i = )
-
-
-    if(flag == 1)
-        printf("Digito encontrado!");
-    else
-        printf("Digito n encontrado...");
+void main() {
+    printf("%llu", potencia(2, 50));
 }
