@@ -1,15 +1,40 @@
-#include <stdio.h>
+int parity(int n) {
+    if(n % 2 == 0)
+        return 0;
+    else
+        return 1;
+}
 
-int proxFibonacci (int n) {
-    int fibo1 = 0, fibo2 = 1;
+int k_alternate(int *n) {
+    int size, odd, even, k;
+    size = *n;
+    scanf("%d", n);
 
-    while(fibo1 + fibo2 < n) {
-        fibo1 = fibo2;
-        fibo2 = fibo1 + fibo2;
+    for(i = 1; i < size; i++) {
+        if(parity(n))
+            while(parity(n)) {
+                even += 1;
+                scanf("%d", n);
+            }
+        else
+            while(!parity(n)) {
+                odd += 1;
+                scanf("%d", n);
+            }
+        if(k == 0 && even == 0)
+            k = odd;
+        else
+            k = even;
     }
-    return fibo1 + fibo2;
 }
 
 void main() {
-    printf("%d", proxFibonacci(15));
+    int n;
+
+    printf("Tamaho?");
+    scanf("%d", &n);
+
+    k_alternate(&n);
+
+    }
 }
