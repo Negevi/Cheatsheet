@@ -1,40 +1,20 @@
-int parity(int n) {
-    if(n % 2 == 0)
-        return 0;
-    else
-        return 1;
-}
-
-int k_alternate(int *n) {
-    int size, odd, even, k;
-    size = *n;
-    scanf("%d", n);
-
-    for(i = 1; i < size; i++) {
-        if(parity(n))
-            while(parity(n)) {
-                even += 1;
-                scanf("%d", n);
-            }
-        else
-            while(!parity(n)) {
-                odd += 1;
-                scanf("%d", n);
-            }
-        if(k == 0 && even == 0)
-            k = odd;
-        else
-            k = even;
-    }
-}
+#include <stdlib.h>
+#include <stdio.h>
+#define N 10
 
 void main() {
-    int n;
+    srand(time(NULL));
+    int i, v[N];
 
-    printf("Tamaho?");
-    scanf("%d", &n);
+    printf("primeiro vec: ");
+    for(i = 0; i < N; i++) {
+        v[i] = rand() % 99 + 1; // 1 a 100
+        printf("%d ", v[i]);
+    }
 
-    k_alternate(&n);
-
+    printf("invertido: ");
+    for(i = 0; i < N; i++) {
+        v[i] = v[N - i - 1];
+        printf("%d ", v[i]);
     }
 }

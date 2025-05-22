@@ -1,20 +1,21 @@
+#include <stdlib.h>
 #include <stdio.h>
 
-int testaTipoChar(char c) {
-    char checker;
-    if(checker << 7 & checker << 1)
-        return 2;
-    return 0;
-    printf
-}
-
 void main() {
-    testaTipoChar('c');
-    //printf("%d", testaTipoChar('A'));
-    //printf("%d", testaTipoChar('a'));
-    //printf("%d", testaTipoChar('C'));
-    //printf("%d", testaTipoChar('c'));
-    //printf("%d", testaTipoChar('1'));
-    //printf("%d", testaTipoChar('1s12e1fgksdgbjngaiog'));
-    // 1 - 2 - 3 - 4 - 5 - 0
+    int i, n, range, sum = 0, part = 0;
+    printf("RANGE: ");
+    scanf("%d", &range);
+
+    int vec[100];
+
+    printf("sizes: ");
+    for(i = 0; i < range; i++) {
+        scanf("%d", &vec[i]);
+        sum += vec[i];
+    }
+
+    for(i = 0; part <= (sum / 2); i++) {
+        part += vec[i];
+    }
+    printf("Int: %d", vec[i]);
 }

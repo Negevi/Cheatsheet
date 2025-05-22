@@ -1,29 +1,27 @@
-void remove_extremos(int *n, int *pri, int *ult) {
-    int tn, pot = 1;
-
-    tn = *n;
-    while(tn >= 10) {
-        tn = tn/10;
-        pot *= 10;
-    }
-
-    *pri = *n / pot;
-    *ult = *n % 10;
-    *n = *n % pot;
-    *n = *n /10;
-}
+# define SIZE 9
+# include <stdlib.h>
 
 void main() {
-    int n = 55555, pri, ult, palind = 1;
+    srand(time(NULL));
+    int n, i, total = 0, med, menores = 0, maiores = 0;
+    int v[SIZE];
 
-    while(n > 0 && pri != ult) {
-        remove_extremos(&n, &pri, &ult);
-        if(pri != ult) {
-            palind = 0;
+    for(i = 0; i < SIZE; i++) {
+        n = rand() % 79 - 40;
+        if(n < 0) {
+            i--;
+        } else {
+            v[i] = n;
+            total += n;
         }
     }
-    if(palind == 1)
-        printf("palind");
-    else
-        printf("n palind");
+    med = total / SIZE;
+
+    for(i = 0; i < SIZE; i++) {
+        if(v[i] > med)
+            maiores++;
+        else
+            menores++;
+    }
+    printf("maiores %d, menores %d", maiores, menores);
 }

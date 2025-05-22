@@ -1,15 +1,17 @@
+#include <stdlib.h>
 #include <stdio.h>
 
-unsigned int inverteNum(unsigned int n) {
-    unsigned int inverted = 0;
-
-    while(n > 0) {
-        inverted = inverted * 10 + n % 10;
-        n = n / 10;
-    }
-    return inverted;
-}
+#include <stdlib.h>
+#include <stdio.h>
 
 void main() {
-        printf("%u", inverteNum(1234));
+    srand(time(NULL));
+    int i, n, range = rand() % 48 + 2;
+    printf("RANGE: %d" range);
+
+    int vec[48];
+
+    for(i = 0; i < range; i++) {
+
+    }
 }
