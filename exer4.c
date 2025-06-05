@@ -1,21 +1,31 @@
-int ehParFoolano(unsigned int n1, unsigned int n2) {
-    int inverted;
-    while(n2 > 0) {
-        // i == pot
-        inverted = inverted * 10 + (n2 % 10);
-        n2 /= 10;
+#include <stdio.h>
+#define SMALL 2
+#define LARGE 3
+void main() {
+    int m1[SMALL][LARGE] = {{2, 2, 2},
+                            {1, 0, 1}};
+
+    int m2[LARGE][SMALL] = {{2, 2},
+                            {1, 0},
+                            {2, 2}};
+
+    int result[SMALL][SMALL];
+    int n, offset, i, j;
+
+    for(i = 0; i < SMALL; i++) {
+        n = 0;
+        for(j = 0; j < SMALL; j++) {
+            n += m1[i + offset][j] * m2[i + offset][j];
+            printf("N == %d\n", n);
+        }
+        offset++;
+        result[i][j] = n;
     }
 
-    if(n1 == n2)
-        return 1;
-    return 0;
-}
-
-void main() {
-    int n1, n2;
-    scanf("%d %d", &n1, &n2);
-    if(ehParFoolano(n1, n2))
-        printf("foolano");
-    else
-        printf("boolano");
+    for(int i = 0; i < SMALL; i++) {
+        for(int j = 0; j < SMALL; j++) {
+            printf("%d ", result[i][j]);
+        }
+        printf("\n");
+    }
 }

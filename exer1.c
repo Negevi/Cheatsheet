@@ -1,24 +1,29 @@
-# define SIZE 9
-# include <stdlib.h>
+#include <stdio.h>
+#define I 2
+#define J 3
 
 void main() {
-    srand(4);
-    int n, i, total = 0, med, menores = 0, maiores = 0;
-    int v[SIZE];
-
-    for(i = 0; i < SIZE; i++) {
-        n = rand() % 59 + 20;
-        printf("%d ", n);
-        v[i] = n;
-        total += n;
+    int max = 0, compare;
+    int campo [I][J] = {{81, 28, 240, 10},
+                        {40, 10, 100, 240},
+                        {20, 180, 110, 35}};
+    for(int i = 0; i < I; i++) {
+    compare = 0;
+        for(int j = 0; j < J; j++) {
+            compare += campo[i][j];
+        }
+        if(compare > max)
+            max = compare;
     }
-    med = total / SIZE;
 
-    for(i = 0; i < SIZE; i++) {
-        if(v[i] > med)
-            maiores++;
-        else
-            menores++;
+    for(int j = 0; j <= J; j++) {
+    compare = 0;
+        for(int i = 0; i <= I; i++) {
+            compare += campo[i][j];
+        }
+        if(compare > max)
+            max = compare;
     }
-    printf("maiores %d, menores %d", maiores, menores);
+
+    printf("max %d", max);
 }
