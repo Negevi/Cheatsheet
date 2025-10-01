@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "wavfile.h": "c",
+        "random": "c"
+    }
+}
