@@ -1,0 +1,12 @@
+A func. misterio simplesmente remove o elemento "elem" da lista "l" (caso ele exista)
+obviamente, ele cuida de todos os casos (elemento unico, retirar elemento que nao esta na list, etc.)
+
+List* misterio (List *l, int elem) {
+    Lista *no = search (lista, elem);
+    if (no == NULL) { return lista; }
+    if (lista == no) { lista = no->next; }
+    if (no->next != NULL) { no->next->prev = no->prev; }
+    if (no->prev != NULL) { no->prev->next = no->next; }
+    free(no)
+    return l;
+}
